@@ -1,0 +1,50 @@
+
+
+init_dynload()
+av_log_set_flags(AV_LOG_SKIP_REPEATED);
+parse_loglevel(argc, argv, options);
+avdevice_register_all();
+avformat_network_init();
+init_opts();
+show_banner(argc, argv, options);
+parse_options(NULL, argc, argv, options, opt_input_file);
+	DL_Init (flags)
+SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
+SDL_EventState(SDL_USEREVENT, SDL_IGNORE);	
+
+av_init_packet(&flush_pkt);
+window = SDL_CreateWindow(program_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, default_width, default_height, flags);
+SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+is = stream_open(input_filename, file_iformat);
+	VideoState *is;
+	SDL_CreateThread(read_thread, "read_thread", is);
+	//read_thread
+		avformat_alloc_context()
+		avformat_open_input(&ic, is->filename, is->iformat, &format_opts);
+		av_format_inject_global_side_data(ic);
+		setup_find_stream_info_opts(ic, codec_opts)
+		avformat_find_stream_info(ic, opts);
+		avformat_seek_file(ic, -1, INT64_MIN, timestamp, INT64_MAX, 0);
+		avformat_match_stream_specifier(ic, st, wanted_stream_spec[type]) > 0)
+		av_find_best_stream(ic, AVMEDIA_TYPE_VIDEO,st_index[AVMEDIA_TYPE_VIDEO], -1, NULL, 0);
+		av_guess_sample_aspect_ratio(ic, st, NULL);
+		stream_component_open(is, st_index[AVMEDIA_TYPE_VIDEO]);
+		for{
+			avformat_seek_file(is->ic, -1, seek_min, seek_target, seek_max, is->seek_flags);
+		}
+		if(is->video_stream >= 0) {
+            packet_queue_flush(&is->videoq);
+            packet_queue_put(&is->videoq, &flush_pkt);
+        }
+        
+        stream_has_enough_packets
+        SDL_LockMutex(wait_mutex);
+        SDL_CondWaitTimeout(is->continue_read_thread, wait_mutex, 10);
+        SDL_UnlockMutex(wait_mutex);
+        
+        ret = av_read_frame(ic, pkt);
+        packet_queue_put_nullpacket(&is->videoq, is->video_stream);
+        
+        
+        
