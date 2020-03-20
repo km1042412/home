@@ -207,6 +207,12 @@ int main(int argc, char **argv)
         exit(1);
     }
 #endif
+	{
+		//AVDictionary **opts = setup_find_stream_info_opts(fmt_ctx, NULL);
+		int orig_nb_streams = fmt_ctx->nb_streams;
+		int err = avformat_find_stream_info(fmt_ctx, NULL);
+	}
+       
     /* dump input information to stderr */
     av_dump_format(fmt_ctx, 0, filename, 0);
 
