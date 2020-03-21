@@ -1,0 +1,30 @@
+;;================================ 
+;;为我的emacs配置主题色彩 (color-theme-色彩名称) 
+;;================================ 
+ (add-to-list 'load-path
+    "~/.emacs.d/color-theme-6.6.0")
+ (require 'color-theme) 
+ (color-theme-initialize) 
+ (color-theme-xp)
+
+;; 启动自动显示行数  
+ (require 'linum)  
+ (setq linum-mode t)  
+ (global-linum-mode 1)  
+
+;;在mode-line显示列号  
+ (setq column-number-mode t)  
+ (setq line-number-mode t)  
+   
+;; 启动emacs时窗口最大化  
+ (my-maximized)  
+;; Change the indentation level  
+ (setq-default c-basic-offset 4)  
+   
+;; Change the style  
+ (setq c-default-style "linux"  
+          c-basic-offset 4)  
+   
+ (setq indent-tabs-mode nil)  
+ (setq default-tab-width 4)  
+ (setq tab-width 4)      
