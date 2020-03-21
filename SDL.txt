@@ -1,0 +1,20 @@
+SDL_CreateTexture()
+format:YUV,RGB
+access:Texture,Targe,Stream
+
+SDL_SetRenderTarget()//往哪里去渲染
+SDL_RenderCler()
+SDL_RenderCopy//将纹理copy到显卡中
+SDL_RenderPresent()
+
+理解纹理渲染
+1设置从哪里去渲染这里我仅仅发现是从纹理中
+2清除屏目
+3拷贝数据至显卡中
+4现在显示出来吧
+
+SDL_Create_Thread()
+更新纹理
+SDL_UpdateTexutre() //图片 
+SDL_UpdateYUVTexture()//效率高
+

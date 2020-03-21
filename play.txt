@@ -1,0 +1,43 @@
+SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)
+av_register_all();
+avformat_open_input(&pFormatCtx, argv[1], NULL, NULL)!=0)
+avformat_find_stream_info(pFormatCtx, NULL)
+av_dump_format(pFormatCtx, 0, argv[1], 0);
+avcodec_find_decoder(pCodecCtxOrig->codec_id);
+avcodec_alloc_context3(pCodec);
+avcodec_copy_context(pCodecCtx, pCodecCtxOrig)
+avcodec_open2(pCodecCtx, pCodec, NULL)
+
+SDL_CreateWindow( "Media Player",
+		          SDL_WINDOWPOS_UNDEFINED,
+		  	  SDL_WINDOWPOS_UNDEFINED,
+			  w_width, w_height,
+			  SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);	  
+SDL_CreateRenderer(win, -1, 0);	
+SDL_CreateTexture(renderer,
+		    pixformat, 
+		    SDL_TEXTUREACCESS_STREAMING,
+		    w_width, 
+		    w_height);	
+sws_getContext(pCodecCtx->width,   图像裁剪
+			   pCodecCtx->height,
+			   pCodecCtx->pix_fmt,
+			   pCodecCtx->width,
+			   pCodecCtx->height,
+			   AV_PIX_FMT_YUV420P,
+			   SWS_BILINEAR,
+			   NULL,
+			   NULL,
+			   NULL
+			   );		
+			   
+av_read_frame(pFormatCtx, &packet)		
+avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);	
+SDL_UpdateYUVTexture(texture, NULL, 
+			     pict->data[0], pict->linesize[0],
+			     pict->data[1], pict->linesize[1],
+			     pict->data[2], pict->linesize[2]);
+SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, texture, NULL, &rect);
+	SDL_RenderPresent(renderer);			     
+	       	  
